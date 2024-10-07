@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "993512018843",
+    "project_id": "turbopaisa-fa189",
+    "storage_bucket": "turbopaisa-fa189.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993512018843:android:358a1fa5cb70e23884473e",
+        "android_client_info": {
+          "package_name": "com.tejkun.turbopaisa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeEmKqHpIpJijpTrU2tqtrIZOsRLRx8-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
