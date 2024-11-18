@@ -3,7 +3,6 @@ import 'dart:collection';
 import 'dart:convert';
 
 import 'dart:ui';
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 
@@ -133,6 +132,7 @@ class _HomePage1State extends ConsumerState<HomePage1>
       );
     }
   }
+
   // final String _urls = 'https://www.youtube.com/shorts/YpBZUKCi0f0';
 
   String tutorialLink = ''; // Field to stor
@@ -2881,7 +2881,8 @@ class _HomePage1State extends ConsumerState<HomePage1>
             Expanded(
               child: InkWell(
                 onTap: () async {
-                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
                   var user = prefs.getString("user"); // No need to await here
                   if (user != null) {
                     UserData data = UserData.fromJson(jsonDecode(user));
@@ -2890,17 +2891,22 @@ class _HomePage1State extends ConsumerState<HomePage1>
                     // print('this is user_id: ${data.userId}');
                     // print('this is URL FROM HOME PAGE: ${banners[index].url!}');
 
-                    if (banners[index].url != null && banners[index].url!.isNotEmpty) {
+                    if (banners[index].url != null &&
+                        banners[index].url!.isNotEmpty) {
                       if (data.userId != null) {
                         String bannerUrl = banners[index].url!;
 
                         // Parse the URL and update the query parameters
                         Uri url = Uri.parse(bannerUrl);
-                        Map<String, String> queryParams = Map.from(url.queryParameters);
-                        queryParams['p1'] = data.userId.toString(); // Update p1 with the userId
-                        queryParams['p3'] = data.gaid.toString(); // Update p1 with the userId
+                        Map<String, String> queryParams =
+                            Map.from(url.queryParameters);
+                        queryParams['p1'] =
+                            data.userId.toString(); // Update p1 with the userId
+                        queryParams['p3'] =
+                            data.gaid.toString(); // Update p1 with the userId
 
-                        Uri updatedUrl = url.replace(queryParameters: queryParams);
+                        Uri updatedUrl =
+                            url.replace(queryParameters: queryParams);
 
                         // Print the updated URL for debugging
                         print('Updated URL: ${updatedUrl.toString()}');
@@ -2909,7 +2915,8 @@ class _HomePage1State extends ConsumerState<HomePage1>
                           context,
                           data.userId,
                           url: updatedUrl.toString(),
-                          earncashRestApi: 'earncashRestApi', // Replace with actual API key if needed
+                          earncashRestApi:
+                              'earncashRestApi', // Replace with actual API key if needed
                         );
                       } else {
                         showSnackBar(context, 'User ID is null');
@@ -2920,9 +2927,6 @@ class _HomePage1State extends ConsumerState<HomePage1>
                   } else {
                     showSnackBar(context, 'User data not found');
                   }
-
-
-
 
                   // launchUrlBrowser(context, banners[index].url ?? "", url: '',
                   // );print('user_url: ${launchUrlBrowser(context, banners[index].url ?? "", url: '')}');
