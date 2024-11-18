@@ -39,6 +39,32 @@ class AppLinksDeepLink {
   }
   
 
+  // void _openAppLink(Uri uri) {
+  //   print('Received URI: $uri');
+  //   String path = uri.path;
+  //   Map<String, String> queryParams = uri.queryParameters;
+  //
+  //   print('Navigating to path: $path with params: $queryParams');
+  //
+  //   switch (path) {
+  //     case '/offerDetailsPage':
+  //     // Check if offer_id is available in query parameters
+  //       final offerId = queryParams['offer_id'];
+  //       if (offerId != null) {
+  //         // Navigate to offerDetailsPage with offerId as an argument
+  //         Get.toNamed(Routes.offerDetailsPage, arguments: {'offer_id': offerId});
+  //       } else {
+  //         // Navigate to offerDetailsPage without an offer ID
+  //         Get.toNamed(Routes.offerDetailsPage);
+  //       }
+  //       break;
+  //     default:
+  //       print('Unknown path: $path');
+  //       // Fallback for unknown paths
+  //       Get.toNamed(Routes.homePage); // You may change this to a more appropriate default
+  //   }
+  // }
+
   void _openAppLink(Uri uri) {
     print('Received URI: $uri');
     String path = uri.path;
@@ -48,22 +74,21 @@ class AppLinksDeepLink {
 
     switch (path) {
       case '/offerDetailsPage':
-      // Check if offer_id is available in query parameters
         final offerId = queryParams['offer_id'];
         if (offerId != null) {
-          // Navigate to offerDetailsPage with offerId as an argument
+          print('Navigating to offerDetailsPage with offer_id: $offerId');
           Get.toNamed(Routes.offerDetailsPage, arguments: {'offer_id': offerId});
         } else {
-          // Navigate to offerDetailsPage without an offer ID
+          print('Navigating to offerDetailsPage without offer_id');
           Get.toNamed(Routes.offerDetailsPage);
         }
         break;
       default:
         print('Unknown path: $path');
-        // Fallback for unknown paths
-        Get.toNamed(Routes.homePage); // You may change this to a more appropriate default
+        Get.toNamed(Routes.homePage);
     }
   }
+
 
   void dispose() {
     _linkSubscription?.cancel();

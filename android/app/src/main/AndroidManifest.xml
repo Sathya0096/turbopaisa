@@ -46,10 +46,8 @@
 <!--                <data android:scheme="http" android:host="turbopaisa.page.link" android:pathPrefix="/" />-->
 <!--                <data android:scheme="https" android:host="turbopaisa.page.link" android:pathPrefix="/" />-->
 
-                    <action android:name="android.intent.action.VIEW" />
-                    <category android:name="android.intent.category.BROWSABLE" />
-                    <data android:scheme="http" android:host="turbopaisa.page.link" />
-                    <data android:scheme="https" android:host="turbopaisa.page.link" />
+                    <data android:scheme="http" android:host="turbopaisa.page.link" android:pathPrefix="/offerDetailsPage" />
+                    <data android:scheme="https" android:host="turbopaisa.page.link" android:pathPrefix="/offerDetailsPage" />
             </intent-filter>
 
 

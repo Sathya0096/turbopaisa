@@ -276,6 +276,7 @@ class _MyAppState extends ConsumerState<MyApp> {
   @override
   void initState() {
     super.initState();
+    _handleIncomingLinks();
     //initDynamicLinks2();
     //_initDynamicLinks();
     // initReferrerDetails();
@@ -313,38 +314,38 @@ class _MyAppState extends ConsumerState<MyApp> {
     // print(Uri.base.queryParameters);
   }
 
-  // void _handleIncomingLinks() async {
-  //   // Handle deep links if the app is already opened
-  //   FirebaseDynamicLinks.instance.onLink.listen((dynamicLinkData) {
-  //     final Uri? deepLink = dynamicLinkData.link;
-  //     if (deepLink != null) {
-  //       _handleDeepLink(deepLink);
-  //     }
-  //   }).onError((error) {
-  //     print('onLinkError');
-  //     print(error.message);
-  //   });
-  //
-  //   // Handle deep links if the app is opened from a terminated state
-  //   final PendingDynamicLinkData? initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
-  //   if (initialLink != null) {
-  //     final Uri? deepLink = initialLink.link;
-  //     if (deepLink != null) {
-  //       _handleDeepLink(deepLink);
-  //     }
-  //   }
-  // }
+  void _handleIncomingLinks() async {
+    // Handle deep links if the app is already opened
+    FirebaseDynamicLinks.instance.onLink.listen((dynamicLinkData) {
+      final Uri? deepLink = dynamicLinkData.link;
+      if (deepLink != null) {
+        _handleDeepLink(deepLink);
+      }
+    }).onError((error) {
+      print('onLinkError');
+      print(error.message);
+    });
 
-  // void _handleDeepLink(Uri deepLink) {
-  //   // Process the deep link, e.g., navigate to a specific screen
-  //   final String? referralCode = deepLink.queryParameters['referral'];
-  //   if (referralCode != null) {
-  //     print('Referral code: $referralCode');
-  //     // Handle the referral code, e.g., navigate to a referral screen
-  //   }
-  //
-  //   // Handle other query parameters as needed
-  // }
+    // Handle deep links if the app is opened from a terminated state
+    final PendingDynamicLinkData? initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
+    if (initialLink != null) {
+      final Uri? deepLink = initialLink.link;
+      if (deepLink != null) {
+        _handleDeepLink(deepLink);
+      }
+    }
+  }
+
+  void _handleDeepLink(Uri deepLink) {
+    // Process the deep link, e.g., navigate to a specific screen
+    final String? referralCode = deepLink.queryParameters['referral'];
+    if (referralCode != null) {
+      print('Referral code: $referralCode');
+      // Handle the referral code, e.g., navigate to a referral screen
+    }
+
+    // Handle other query parameters as needed
+  }
   void _onTranslatedLanguage(Locale? locale) {
     setState(() {});
   }
