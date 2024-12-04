@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class ApiEndPoints {
 
-  // static String baseUrl = 'https://app.turbopaisa.com/services/';
-  static String baseUrl = 'https://dev.turbopaisa.com/services/';
+  static String baseUrl = 'https://app.turbopaisa.com/services/';
+  // static String baseUrl = 'https://dev.turbopaisa.com/services/';
 
   static String getMyOffersDetailspagination = "offers/getMyOffersDetailspagination";
   static String getupcomingofferDetails = 'offers/getupcomingofferDetails';

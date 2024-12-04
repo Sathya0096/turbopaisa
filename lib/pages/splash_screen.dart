@@ -151,7 +151,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       InkWell(
                         onTap: () async {
                           print('WEBVIEW OPENING');
-
+                          // _grecaptcha
                           SharedPreferences prefs =
                               await SharedPreferences.getInstance();
 
